@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dagim Mersha's portfolio of data analysis, health informatics, research, and data quality projects.">
+  <title>Dagim Mersha | Data Analyst Portfolio</title>
+  <style>
+    :root { --bg:#0b1220; --panel:#111c2e; --panel2:#152238; --text:#e8eef8; --muted:#9aaac0; --teal:#58d6c3; --line:#25354b; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Inter,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1080px,92%); margin:auto; }
+    header { position:sticky; top:0; z-index:10; background:rgba(11,18,32,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+    .nav { min-height:70px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { font-weight:750; letter-spacing:.04em; color:var(--teal); }
+    nav { display:flex; gap:22px; align-items:center; font-size:.92rem; color:var(--muted); }
+    nav a:hover, nav a:focus { color:var(--teal); }
+    .menu { display:none; border:1px solid var(--line); background:var(--panel); color:var(--text); padding:8px 12px; border-radius:8px; cursor:pointer; }
+    .hero { padding:92px 0 74px; display:grid; grid-template-columns:1.4fr .8fr; gap:50px; align-items:center; }
+    .eyebrow { color:var(--teal); text-transform:uppercase; letter-spacing:.14em; font-size:.78rem; font-weight:700; }
+    h1 { font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.08; letter-spacing:-.045em; margin:15px 0 20px; }
+    h1 span { color:var(--teal); }
+    .intro { color:var(--muted); font-size:1.1rem; max-width:650px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .btn { display:inline-flex; padding:11px 17px; border-radius:9px; font-weight:650; border:1px solid var(--line); transition:.2s; }
+    .btn.primary { background:var(--teal); color:#06201d; border-color:var(--teal); }
+    .btn:hover { transform:translateY(-2px); }
+    .hero-card { background:linear-gradient(145deg,var(--panel2),var(--panel)); border:1px solid var(--line); border-radius:20px; padding:27px; box-shadow:0 20px 55px rgba(0,0,0,.18); }
+    .hero-card .big { font-size:2rem; font-weight:750; color:var(--teal); }
+    .hero-card p { color:var(--muted); margin:5px 0 20px; }
+    .mini-tags,.tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { padding:5px 10px; border-radius:100px; border:1px solid #31504f; background:#142b32; color:#a6e9df; font-size:.8rem; }
+    section { padding:64px 0; border-top:1px solid rgba(37,53,75,.65); }
+    .section-head { display:flex; justify-content:space-between; gap:20px; align-items:end; margin-bottom:26px; }
+    h2 { font-size:2rem; letter-spacing:-.025em; margin:8px 0 0; }
+    .section-desc { color:var(--muted); max-width:600px; }
+    .about-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:24px; }
+    .card { border:1px solid var(--line); background:var(--panel); border-radius:16px; padding:24px; }
+    .card p { color:var(--muted); margin-top:8px; }
+    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .skill h3 { margin:0 0 12px; font-size:1rem; }
+    .projects { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+    .project { display:flex; flex-direction:column; min-height:255px; }
+    .project .number { color:var(--teal); font-size:.78rem; letter-spacing:.1em; font-weight:700; }
+    .project h3 { margin:10px 0 7px; font-size:1.25rem; }
+    .project p { color:var(--muted); flex:1; }
+    .project .tags { margin:12px 0 18px; }
+    .project-link { color:var(--teal); font-weight:650; }
+    .soon { color:#c6a8ff; font-size:.8rem; }
+    .contact-box { display:flex; justify-content:space-between; align-items:center; gap:25px; flex-wrap:wrap; }
+    .contact-box p { color:var(--muted); max-width:620px; }
+    footer { padding:26px 0; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); }
+    footer .wrap { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    @media(max-width:760px) {
+      .hero,.about-grid { grid-template-columns:1fr; }
+      .hero { padding:62px 0 48px; gap:25px; }
+      .skills-grid,.projects { grid-template-columns:1fr; }
+      .menu { display:block; }
+      nav { display:none; position:absolute; top:70px; left:0; right:0; background:var(--bg); padding:18px 4%; border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start; }
+      nav.open { display:flex; }
+      .section-head { display:block; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">DAGIM MERSHA</a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav id="navLinks" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap hero" id="home">
+    <div>
+      <div class="eyebrow">Data Analyst · Health Informatics · Research</div>
+      <h1>Turning data into <span>meaningful insights.</span></h1>
+      <p class="intro">I work with data to uncover patterns, improve data quality, and support evidence-informed decisions. My background combines health informatics, research, data collection, and analytical work.</p>
+      <div class="actions"><a class="btn primary" href="#projects">Explore my projects ↓</a><a class="btn" href="#contact">Get in touch</a></div>
+    </div>
+    <aside class="hero-card">
+      <div class="eyebrow">My focus</div>
+      <div class="big">Data → Insight → Action</div>
+      <p>Thoughtful analysis, clear visualizations, and practical recommendations.</p>
+      <div class="mini-tags"><span class="tag">Data analysis</span><span class="tag">Data quality</span><span class="tag">Research</span><span class="tag">Health data</span></div>
+    </aside>
+  </div>
+
+  <section id="about"><div class="wrap">
+    <div class="section-head"><div><div class="eyebrow">A little about me</div><h2>About</h2></div></div>
+    <div class="about-grid">
+      <div class="card"><h3>My background</h3><p>I am a Health Informatics graduate with experience in research, field data collection, data management, data quality assurance, and reporting. I enjoy using analytical tools to make complex datasets easier to understand and turn findings into useful information.</p><p>I'm continuing to develop my skills in Python, SQL, data visualization, and business intelligence while building practical projects that reflect real-world analytical problems.</p></div>
+      <div class="card"><h3>Education</h3><p><strong>BSc in Health Informatics</strong><br>University of Gondar</p><p>Interested in data analytics, digital health, public health research, and data-driven decision-making.</p></div>
+    </div>
+  </div></section>
+  <section id="skills"><div class="wrap">
+    <div class="section-head"><div><div class="eyebrow">Tools & methods</div><h2>Skills</h2></div><p class="section-desc">Tools I use and continue to develop through practical work.</p></div>
+    <div class="skills-grid">
+      <div class="card skill"><h3>Data analysis</h3><div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Stata</span><span class="tag">SPSS</span></div></div>
+      <div class="card skill"><h3>Data & reporting</h3><div class="tags"><span class="tag">Excel</span><span class="tag">Data cleaning</span><span class="tag">Data validation</span><span class="tag">HMIS / DHIS2</span></div></div>
+      <div class="card skill"><h3>Visualization & tools</h3><div class="tags"><span class="tag">Power BI (learning)</span><span class="tag">Matplotlib</span><span class="tag">Jupyter</span><span class="tag">ODK / Kobo</span></div></div>
+    </div>
+  </div></section>
+  <section id="projects"><div class="wrap">
+    <div class="section-head"><div><div class="eyebrow">Selected work</div><h2>Projects</h2></div><p class="section-desc">Case studies showing the process, analysis, visualizations, and takeaways.</p></div>
+    <div class="projects">
+      <article class="card project"><div class="number">PROJECT 01 · PYTHON</div><h3>Solar Energy & Electricity Analysis</h3><p>Assess hourly electricity use and solar generation, examine data quality and anomalies, and compare long-term battery investment scenarios.</p><div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">EDA</span><span class="tag">NPV / IRR</span></div><span class="soon">Case study in progress</span></article>
+      <article class="card project"><div class="number">PROJECT 02 · HEALTH DATA</div><h3>Public Health Data Analysis</h3><p>Explore public health indicators, trends, regional differences, and opportunities to improve service coverage using open data.</p><div class="tags"><span class="tag">Stata</span><span class="tag">Statistics</span><span class="tag">Visualization</span></div><span class="soon">Coming soon</span></article>
+      <article class="card project"><div class="number">PROJECT 03 · BI</div><h3>Agricultural Data Dashboard</h3><p>Build a dashboard to summarize farmer profiles, data completeness, geographic patterns, and key operational indicators using synthetic or public data.</p><div class="tags"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">KPIs</span></div><span class="soon">Coming soon</span></article>
+      <article class="card project"><div class="number">PROJECT 04 · DATA QUALITY</div><h3>Survey Data Quality Assessment</h3><p>Develop a repeatable workflow for detecting missingness, duplicates, inconsistent responses, and validation issues in survey datasets.</p><div class="tags"><span class="tag">Python</span><span class="tag">Excel</span><span class="tag">Data quality</span></div><span class="soon">Coming soon</span></article>
+    </div>
+  </div></section>
+  <section id="contact"><div class="wrap">
+    <div class="contact-box"><div><div class="eyebrow">Let's connect</div><h2>Contact</h2><p>Interested in data analysis, research, health data, or collaboration? Feel free to connect or reach out.</p></div><div class="actions"><a class="btn primary" href="mailto:dagimkindu4@gmail.com">Email me</a><a class="btn" href="https://www.linkedin.com/in/dagimkindu4/" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="https://github.com/DagimKindu" target="_blank" rel="noopener">GitHub</a></div></div>
+  </div></section>
+</main>
+<footer><div class="wrap"><span>© <span id="year"></span> Dagim Mersha</span><span>Built with HTML, CSS & JavaScript · Hosted on GitHub Pages</span></div></footer>
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const opened = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', opened);
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
