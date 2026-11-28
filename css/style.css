@@ -295,9 +295,13 @@ img { max-width: 100%; display: block; }
 
 .floating-badge i { color: var(--primary); }
 
-.badge-1 { top: 8%; left: -6%; animation-delay: 0s; }
-.badge-2 { top: 42%; right: -8%; animation-delay: 1.3s; }
-.badge-3 { bottom: 6%; left: 2%; animation-delay: 2.6s; }
+/* Positions for 6 badges around the circle */
+.badge-1 { top: 5%; left: 5%; animation-delay: 0s; }         /* Python (Top Left) */
+.badge-2 { top: 18%; right: -15%; animation-delay: 0.5s; }   /* Stata (Top Right) */
+.badge-3 { top: 50%; right: -22%; animation-delay: 1s; }     /* R (Middle Right) */
+.badge-4 { bottom: 18%; right: -15%; animation-delay: 1.5s; }/* Power BI (Bottom Right) */
+.badge-5 { bottom: 5%; left: 5%; animation-delay: 2s; }      /* DHIS2 (Bottom Left) */
+.badge-6 { top: 50%; left: -18%; animation-delay: 2.5s; }    /* Kobo (Middle Left) */
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
