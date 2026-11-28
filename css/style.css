@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--dark-2);
   background: var(--white);
   line-height: 1.7;
@@ -39,7 +39,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", poppins;
   line-height: 1.2;
   color: var(--dark);
 }
