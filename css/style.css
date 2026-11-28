@@ -297,7 +297,7 @@ img { max-width: 100%; display: block; }
 
 /* Positions for 6 badges around the circle */
 .badge-1 { top: 5%; left: 5%; animation-delay: 0s; }         /* Python (Top Left) */
-.badge-2 { top: 5%; right: 5%; animation-delay: 0.5s; }   /* Stata (Top Right) */
+.badge-2 { top: 5%; right: -35%; animation-delay: 0.5s; }   /* Stata (Top Right) */
 .badge-3 { top: 50%; right: -22%; animation-delay: 1s; }     /* R (Middle Right) */
 .badge-4 { bottom: 18%; right: -15%; animation-delay: 1.5s; }/* Power BI (Bottom Right) */
 .badge-5 { bottom: 5%; left: 5%; animation-delay: 2s; }      /* DHIS2 (Bottom Left) */
