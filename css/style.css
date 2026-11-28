@@ -39,7 +39,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: "Space Grotesk", poppins;
+  font-family: "Poppins", sans-serif;
   line-height: 1.2;
   color: var(--dark);
 }
@@ -84,7 +84,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-logo {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--dark);
