@@ -1,225 +1,532 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dagim Mersha — Data Analyst with a background in Health Informatics, research, data quality, and data management.">
-  <meta name="theme-color" content="#0b1220">
-  <title>Dagim Mersha | Data Analyst Portfolio</title>
-  <style>
-    :root {
-      --bg: #0b1220; --surface: #111c2e; --surface2: #16243a;
-      --text: #eaf0f8; --muted: #a1b0c5; --teal: #64dfcc;
-      --line: #26374f; --accent: #b8a5ff; --max: 1120px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-    body { margin: 0; color: var(--text); background: var(--bg); font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.65; }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
-    .container { width: min(var(--max), 92%); margin-inline: auto; }
-    .topbar { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(38,55,79,.85); background: rgba(11,18,32,.91); backdrop-filter: blur(14px); }
-    .nav-wrap { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { font-weight: 800; letter-spacing: .07em; color: var(--teal); font-size: .98rem; }
-    .nav-links { display: flex; gap: 26px; align-items: center; color: var(--muted); font-size: .93rem; }
-    .nav-links a:hover { color: var(--teal); }
-    .menu-btn { display: none; color: var(--text); border: 1px solid var(--line); background: var(--surface); border-radius: 9px; padding: 8px 12px; cursor: pointer; }
-    .hero { padding: 92px 0 80px; display: grid; grid-template-columns: 1.45fr .8fr; gap: 56px; align-items: center; }
-    .eyebrow { color: var(--teal); text-transform: uppercase; letter-spacing: .15em; font-weight: 750; font-size: .78rem; }
-    h1 { margin: 14px 0 18px; font-size: clamp(2.8rem, 6.5vw, 5rem); line-height: 1.04; letter-spacing: -.055em; }
-    h1 span { color: var(--teal); }
-    .hero-lead { color: var(--muted); font-size: 1.12rem; max-width: 660px; }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-    .button { display: inline-flex; justify-content: center; align-items: center; padding: 11px 17px; border: 1px solid var(--line); border-radius: 10px; font-weight: 700; transition: transform .2s, border-color .2s, background .2s; }
-    .button:hover { transform: translateY(-2px); border-color: var(--teal); }
-    .button.primary { background: var(--teal); color: #06221e; border-color: var(--teal); }
-    .profile-panel { padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, var(--surface2), var(--surface)); box-shadow: 0 22px 60px rgba(0,0,0,.18); }
-    .profile-mark { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; color: #06221e; background: var(--teal); font-weight: 900; font-size: 1.35rem; letter-spacing: .04em; margin-bottom: 18px; }
-    .profile-panel h2 { margin: 0; font-size: 1.35rem; }
-    .profile-panel p { color: var(--muted); margin: 7px 0 20px; }
-    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
-    .pill { padding: 5px 10px; border: 1px solid #31504f; border-radius: 999px; color: #a9eee4; background: #142b32; font-size: .8rem; }
-    section { padding: 68px 0; border-top: 1px solid rgba(38,55,79,.7); }
-    .section-kicker { color: var(--teal); text-transform: uppercase; letter-spacing: .13em; font-size: .77rem; font-weight: 750; }
-    .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin: 8px 0 12px; letter-spacing: -.035em; }
-    .section-intro { color: var(--muted); max-width: 690px; margin: 0 0 28px; }
-    .about-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 20px; }
-    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 17px; padding: 24px; }
-    .panel h3 { margin: 0 0 10px; font-size: 1.08rem; }
-    .panel p { color: var(--muted); margin: 0 0 12px; }
-    .fact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-    .fact-list li { color: var(--muted); }
-    .fact-list strong { display: block; color: var(--text); font-size: .92rem; }
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-    .skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: 15px; padding: 20px; }
-    .skill-card h3 { font-size: 1rem; margin: 0 0 12px; }
-    .skill-card p { color: var(--muted); margin: 0; font-size: .94rem; }
-    .skill-card .pill-row { margin-top: 14px; }
-    .timeline { display: grid; gap: 14px; }
-    .experience { display: grid; grid-template-columns: 170px 1fr; gap: 20px; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
-    .experience .period { color: var(--teal); font-weight: 700; font-size: .9rem; }
-    .experience h3 { margin: 0; font-size: 1.08rem; }
-    .experience .organization { color: var(--muted); margin: 3px 0 9px; }
-    .experience p { color: var(--muted); margin: 0; }
-    .education-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    .education-card h3 { margin: 0 0 5px; }
-    .education-card p { color: var(--muted); margin: 0; }
-    .grade { color: var(--teal); font-weight: 750; border: 1px solid #31504f; border-radius: 10px; padding: 8px 12px; white-space: nowrap; }
-    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .cert { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 18px; }
-    .cert h3 { margin: 0 0 5px; font-size: 1rem; }
-    .cert p { color: var(--muted); margin: 0; font-size: .92rem; }
-    .project-placeholder { padding: 26px; border: 1px dashed #456078; border-radius: 17px; background: rgba(17,28,46,.65); color: var(--muted); }
-    .project-placeholder strong { display: block; color: var(--text); margin-bottom: 7px; }
-    .contact-panel { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg, var(--surface2), var(--surface)); }
-    .contact-panel h3 { margin: 0 0 7px; font-size: 1.35rem; }
-    .contact-panel p { color: var(--muted); margin: 0; max-width: 630px; }
-    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
-    footer { padding: 26px 0 32px; color: var(--muted); font-size: .87rem; }
-    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .back-top { color: var(--teal); }
-    @media (max-width: 800px) { .hero, .about-grid { grid-template-columns: 1fr; } .hero { padding: 65px 0 55px; gap: 28px; } .skills-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 650px) {
-      .menu-btn { display: block; }
-      .nav-links { display: none; position: absolute; left: 0; right: 0; top: 72px; padding: 18px 4%; background: var(--bg); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 16px; }
-      .nav-links.open { display: flex; }
-      .skills-grid, .cert-grid { grid-template-columns: 1fr; }
-      .experience { grid-template-columns: 1fr; gap: 8px; }
-      section { padding: 54px 0; }
-      .contact-panel { padding: 22px; }
-    }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dagim Kindu Mersha – Health Informatics Professional, Data Analyst & Research Assistant based in Addis Ababa, Ethiopia." />
+  <meta name="author" content="Dagim Kindu Mersha" />
+  <title>Dagim Kindu Mersha | Health Informatics & Data Analyst</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 </head>
 <body>
-<header class="topbar">
-  <div class="container nav-wrap">
-    <a class="brand" href="#home">DAGIM MERSHA</a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">Menu</button>
-    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-      <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-<main>
-  <div class="container hero" id="home">
-    <div>
-      <div class="eyebrow">Data Analyst · Health Informatics · Research</div>
-      <h1>Turning data into <span>meaningful insights.</span></h1>
-      <p class="hero-lead">I'm Dagim, a Health Informatics professional interested in data analysis, research, and information systems. I work with data to understand patterns, improve data quality, and support evidence-informed decisions.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="#projects">Explore my work</a>
-        <a class="button" href="#contact">Get in touch</a>
-      </div>
-    </div>
-    <aside class="profile-panel" aria-label="Professional summary">
-      <div class="profile-mark" aria-hidden="true">DM</div>
-      <h2>Dagim Mersha</h2>
-      <p>Health Informatics · Data Analysis · Research</p>
-      <div class="pill-row"><span class="pill">Python</span><span class="pill">Excel</span><span class="pill">Stata</span><span class="pill">SPSS</span><span class="pill">Power BI</span><span class="pill">DHIS2</span></div>
-    </aside>
-  </div>
 
-  <section id="about">
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">DK<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-name">Dagim Kindu Mersha</h1>
+        <h2 class="hero-title">
+          <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+        </h2>
+        <p class="hero-description">
+          Health Informatics professional passionate about transforming health and
+          development data into actionable insights. Experienced in DHIS2, HMIS,
+          large-scale survey data, and statistical analysis using Python, R, Stata, and SQL.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fas fa-chart-line"></i> View Projects
+          </a>
+          <a href="assets/Dagim_Kindu_CV.pdf" class="btn btn-outline" download>
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://linkedin.com/in/dagimkindu4" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="mailto:dagimkindu4@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+251960836912" aria-label="Phone"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-wrapper">
+          <img src="assets/profile.jpg" alt="Dagim Kindu Mersha" />
+        </div>
+        <div class="floating-badge badge-1"><i class="fas fa-database"></i> DHIS2</div>
+        <div class="floating-badge badge-2"><i class="fab fa-python"></i> Python</div>
+        <div class="floating-badge badge-3"><i class="fas fa-chart-bar"></i> Power BI</div>
+      </div>
+    </div>
+    <div class="scroll-down">
+      <a href="#about"><i class="fas fa-chevron-down"></i></a>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats">
     <div class="container">
-      <div class="section-kicker">About me</div><h2 class="section-title">A little about my background</h2>
-      <p class="section-intro">My background combines health informatics, research fieldwork, data management, and analytical work. I enjoy making datasets more reliable, exploring what they reveal, and presenting results in a clear and useful way.</p>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3 class="stat-number" data-target="3">0</h3>
+          <p>Years Experience</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="stat-number" data-target="6">0</h3>
+          <p>Organizations Served</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="stat-number" data-target="9">0</h3>
+          <p>Certifications</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="stat-number" data-target="1000">0</h3>
+          <p>+ Records Managed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Turning Data Into Impact</h2>
+      </div>
       <div class="about-grid">
-        <article class="panel">
-          <h3>My approach</h3>
-          <p>I value careful data preparation, thoughtful analysis, and clear communication. From survey implementation and validation to statistical analysis and reporting, I focus on producing information people can trust and use.</p>
-          <p>I'm continuing to develop my skills in Python, SQL, business intelligence, and data visualization while building practical projects that demonstrate my work.</p>
-        </article>
-        <aside class="panel">
-          <h3>Quick facts</h3>
-          <ul class="fact-list">
-            <li><strong>Location</strong>Addis Ababa, Ethiopia</li>
-            <li><strong>Education</strong>BSc in Health Informatics</li>
-            <li><strong>Focus areas</strong>Data analytics, public health, research, data quality</li>
-            <li><strong>Languages</strong>English and Amharic</li>
-          </ul>
-        </aside>
+        <div class="about-text">
+          <p>
+            I'm a <strong>Health Informatics</strong> graduate from the University of Gondar
+            (CGPA 3.76/4.00) with hands-on experience across health information systems,
+            research, and large-scale data collection. My work spans Ethiopia's public health
+            sector, agricultural transformation, and development research.
+          </p>
+          <p>
+            I specialize in managing field and institutional datasets, performing data quality
+            assurance, building survey tools, and generating reports that support decision-making.
+            I've worked with <strong>DHIS2, HMIS, KoboToolbox, ODK, Survey Solutions</strong>, and
+            analytical tools like <strong>Python, R, Stata, SPSS, SQL, and Power BI</strong>.
+          </p>
+          <p>
+            Beyond technical skills, I bring strong communication, teamwork, and problem-solving
+            abilities — collaborating with field teams, partners, and stakeholders to ensure data
+            is timely, accurate, and useful.
+          </p>
+          <div class="about-info">
+            <div class="info-item"><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</div>
+            <div class="info-item"><i class="fas fa-graduation-cap"></i> BSc Health Informatics</div>
+            <div class="info-item"><i class="fas fa-briefcase"></i> Open to opportunities</div>
+            <div class="info-item"><i class="fas fa-language"></i> English & Amharic</div>
+          </div>
+        </div>
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <i class="fas fa-heartbeat"></i>
+            <h4>Health Systems</h4>
+            <p>DHIS2, HMIS reporting, routine health data analysis</p>
+          </div>
+          <div class="highlight-card">
+            <i class="fas fa-clipboard-check"></i>
+            <h4>Data Quality</h4>
+            <p>Validation, cleaning, reconciliation, QA workflows</p>
+          </div>
+          <div class="highlight-card">
+            <i class="fas fa-chart-pie"></i>
+            <h4>Analytics & Reporting</h4>
+            <p>Dashboards, data briefs, visualization for decisions</p>
+          </div>
+          <div class="highlight-card">
+            <i class="fas fa-users"></i>
+            <h4>Field Research</h4>
+            <p>Large-scale surveys, SMART nutrition, household data</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <section id="skills">
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="section section-alt">
     <div class="container">
-      <div class="section-kicker">Technical toolkit</div><h2 class="section-title">Skills & tools</h2>
-      <p class="section-intro">Tools and methods I use or am actively developing through professional work, training, and independent projects.</p>
+      <div class="section-header">
+        <span class="section-tag">Skills & Tools</span>
+        <h2 class="section-title">My Technical Toolkit</h2>
+      </div>
       <div class="skills-grid">
-        <article class="skill-card"><h3>Data analysis</h3><p>Cleaning, exploratory analysis, descriptive statistics, trend analysis, and interpreting results.</p><div class="pill-row"><span class="pill">Python</span><span class="pill">Pandas</span><span class="pill">NumPy</span></div></article>
-        <article class="skill-card"><h3>Statistics</h3><p>Statistical analysis, survey analysis, tabulation, and analytical reporting.</p><div class="pill-row"><span class="pill">Stata</span><span class="pill">SPSS</span></div></article>
-        <article class="skill-card"><h3>Data visualization</h3><p>Charts, dashboards, summaries, and communicating findings to different audiences.</p><div class="pill-row"><span class="pill">Power BI</span><span class="pill">Excel</span><span class="pill">Matplotlib</span></div></article>
-        <article class="skill-card"><h3>Data quality & management</h3><p>Validation, completeness checks, reconciliation, error detection, and data documentation.</p><div class="pill-row"><span class="pill">Excel</span><span class="pill">Python</span><span class="pill">Quality checks</span></div></article>
-        <article class="skill-card"><h3>Research & field data</h3><p>Survey implementation, questionnaire tools, interviews, and field data workflows.</p><div class="pill-row"><span class="pill">ODK</span><span class="pill">KoboToolbox</span><span class="pill">Survey tools</span></div></article>
-        <article class="skill-card"><h3>Health information systems</h3><p>Health information management, routine reporting, and digital health systems.</p><div class="pill-row"><span class="pill">DHIS2</span><span class="pill">HMIS</span><span class="pill">SmartCare</span></div></article>
+
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <h3>Information Systems</h3>
+          <ul>
+            <li>DHIS2</li>
+            <li>HMIS</li>
+            <li>KoboToolbox</li>
+            <li>ODK</li>
+            <li>Survey Solutions</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Data & Analysis</h3>
+          <ul>
+            <li>Microsoft Excel</li>
+            <li>Power BI</li>
+            <li>SPSS</li>
+            <li>Stata</li>
+            <li>Python</li>
+            <li>R</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-server"></i></div>
+          <h3>Databases</h3>
+          <ul>
+            <li>SQL</li>
+            <li>MySQL</li>
+            <li>PostgreSQL</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <h3>Programming & Web</h3>
+          <ul>
+            <li>Python</li>
+            <li>PHP</li>
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+          <h3>Core Competencies</h3>
+          <ul>
+            <li>Data Entry & Cleaning</li>
+            <li>Data Validation</li>
+            <li>Visualization</li>
+            <li>Analysis & Reporting</li>
+            <li>Technical Troubleshooting</li>
+            <li>User Support</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-users"></i></div>
+          <h3>Soft Skills</h3>
+          <ul>
+            <li>Teamwork</li>
+            <li>Communication</li>
+            <li>Time Management</li>
+            <li>Problem-Solving</li>
+            <li>Collaboration</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </section>
-  <section id="experience">
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="section">
     <div class="container">
-      <div class="section-kicker">Experience</div><h2 class="section-title">Professional experience</h2>
-      <p class="section-intro">Experience across project data management, survey work, health information systems, and research support.</p>
+      <div class="section-header">
+        <span class="section-tag">Career Journey</span>
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
       <div class="timeline">
-        <article class="experience"><div class="period">2025 – 2026</div><div><h3>Junior Project Officer I</h3><div class="organization">Ethiopian Agricultural Transformation Institute (ATI)</div><p>Supported farmer profiling activities, data progress monitoring, validation, reconciliation, and data quality improvement processes.</p></div></article>
-        <article class="experience"><div class="period">2025</div><div><h3>Data Collector</h3><div class="organization">Ethiopian Public Health Institute (EPHI)</div><p>Participated in baseline assessment fieldwork, survey implementation, and data collection activities related to school feeding and social protection programming.</p></div></article>
-        <article class="experience"><div class="period">2024</div><div><h3>Health Informatics Professional</h3><div class="organization">Health Center, Addis Ababa</div><p>Supported health information management and reporting processes, data quality activities, and electronic health information workflows.</p></div></article>
-        <article class="experience"><div class="period">Research & fieldwork</div><div><h3>Research Technical Assistant / Enumerator</h3><div class="organization">Research projects and field assignments</div><p>Contributed to qualitative and quantitative data collection, interviews, transcription, translation, and field research using digital data collection tools.</p></div></article>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Dec 2025 – Present</span>
+            <h3>Junior Project Officer I</h3>
+            <h4>Ethiopian Agricultural Transformation Institute — Addis Ababa</h4>
+            <ul>
+              <li>Support large-scale farmer data collection, entry, cleaning, reconciliation, validation and dataset maintenance.</li>
+              <li>Review farmer records for completeness and consistency; resolve discrepancies through systematic verification.</li>
+              <li>Prepare progress summaries, data briefs, documentation and project reporting for decision-making.</li>
+              <li>Coordinate with field teams and partners on data issues and maintain timely, accurate records.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">May 2025 – Jan 2026</span>
+            <h3>Data Collector</h3>
+            <h4>Ethiopian Public Health Institute (EPHI) — Afar & Somali</h4>
+            <ul>
+              <li>Conducted large-scale household surveys for SNASSP and MAD projects across multiple woredas.</li>
+              <li>Collected data on food security, WASH, livelihoods, agriculture and related household indicators.</li>
+              <li>Transcribed and translated fieldwork files to ensure accuracy and reliability.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Jan 2024 – May 2025</span>
+            <h3>Data Clerk</h3>
+            <h4>Ethiopian Public Health Institute (EPHI) — Addis Ababa</h4>
+            <ul>
+              <li>Entered, cleaned, validated, and managed survey, online form, and physical record data.</li>
+              <li>Used Stata, SPSS and Excel for cleaning, validation, organization and analysis.</li>
+              <li>Supported field data collection activities and research initiatives including dataset preparation and review.</li>
+              <li>Maintained data quality; identified and resolved completeness and consistency issues.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Jan 2024 – Feb 2025</span>
+            <h3>Health Informatics Professional</h3>
+            <h4>NifasSilk Lafto Subcity Woreda 10 HC — Addis Ababa</h4>
+            <ul>
+              <li>Managed HMIS reporting using DHIS2, ensuring timely and accurate data submission.</li>
+              <li>Analyzed routine health data to identify service gaps and performance trends.</li>
+              <li>Provided technical support and user training on health information systems.</li>
+              <li>Troubleshot system issues and supported data quality and usability improvements.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Dec 2023 – Jan 2024</span>
+            <h3>Field Data Collector</h3>
+            <h4>Frontieri Consult PLC — Addis Ababa</h4>
+            <ul>
+              <li>Collected survey data for the Private Sector Development in Ethiopia (PSD-E) project.</li>
+              <li>Used Survey Solutions to collect data from MSMEs, startups and small businesses.</li>
+              <li>Reviewed submissions for completeness and consistency.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">May 2023 – Oct 2023</span>
+            <h3>Field Research Technical Assistant</h3>
+            <h4>BAN-Development Research Center for Excellence — Amhara</h4>
+            <ul>
+              <li>Prepared digital survey tools using KoboToolbox and XLSForm.</li>
+              <li>Supported multi-sector research and field data collection in nutrition, WASH, health, protection and emergency response.</li>
+              <li>Conducted SMART Nutrition Surveys and household food security assessments.</li>
+              <li>Collected anthropometric and household survey data.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
-  <section id="education">
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section section-alt">
     <div class="container">
-      <div class="section-kicker">Education</div><h2 class="section-title">Academic background</h2>
-      <article class="panel education-card">
-        <div><h3>Bachelor of Science in Health Informatics</h3><p>University of Gondar · 2018–2022</p><p>Training in health information systems, data management, research methods, and health data use.</p></div>
-        <div class="grade">CGPA 3.76 / 4.00</div>
-      </article>
+      <div class="section-header">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Selected work in data analysis, health informatics, and research</p>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3>HMIS & DHIS2 Reporting System</h3>
+          <p>Managed routine health information system reporting for a woreda health center — ensuring timely, accurate DHIS2 submissions and analyzing service-gap trends.</p>
+          <div class="project-tags">
+            <span>DHIS2</span><span>HMIS</span><span>Data Quality</span>
+          </div>
+          <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <h3>SNASSP & MAD Household Surveys</h3>
+          <p>Large-scale household survey data collection for EPHI across Afar and Somali regions, covering food security, WASH, livelihoods, and agriculture indicators.</p>
+          <div class="project-tags">
+            <span>KoboToolbox</span><span>Survey Data</span><span>Field Research</span>
+          </div>
+          <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3>Farmer Data Management Pipeline</h3>
+          <p>Supporting large-scale farmer data pipelines at ATI — cleaning, reconciling, validating and reporting structured farmer-level records for project monitoring.</p>
+          <div class="project-tags">
+            <span>Excel</span><span>Data Validation</span><span>Reporting</span>
+          </div>
+          <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-child"></i>
+          </div>
+          <h3>SMART Nutrition Survey</h3>
+          <p>Conducted SMART nutrition surveys and anthropometric data collection with BAN-DRCE in Amhara — supporting multi-sector emergency response research.</p>
+          <div class="project-tags">
+            <span>SMART</span><span>Anthropometry</span><span>KoboToolbox</span>
+          </div>
+          <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-store"></i>
+          </div>
+          <h3>PSD-E Private Sector Survey</h3>
+          <p>Survey data collection from MSMEs, startups and small businesses for Frontieri Consult's Private Sector Development in Ethiopia project using Survey Solutions.</p>
+          <div class="project-tags">
+            <span>Survey Solutions</span><span>MSMEs</span><span>Data Collection</span>
+          </div>
+          <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h3>Health Data Dashboards</h3>
+          <p>Building analytical dashboards and data briefs to visualize health and project performance indicators for program monitoring and decision-making.</p>
+          <div class="project-tags">
+            <span>Power BI</span><span>Python</span><span>Visualization</span>
+          </div>
+          <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
     </div>
   </section>
-  <section id="certifications">
+
+  <!-- ============ CERTIFICATIONS ============ -->
+  <section id="certifications" class="section">
     <div class="container">
-      <div class="section-kicker">Continuous learning</div><h2 class="section-title">Training & certifications</h2>
-      <p class="section-intro">Selected learning experiences that complement my academic and professional background.</p>
+      <div class="section-header">
+        <span class="section-tag">Credentials</span>
+        <h2 class="section-title">Certifications & Education</h2>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <h3>BSc in Health Informatics</h3>
+          <p>University of Gondar — Gondar, Ethiopia · 2018 – 2022</p>
+          <span class="edu-cgpa">CGPA: 3.76 / 4.00</span>
+        </div>
+      </div>
+
       <div class="cert-grid">
-        <article class="cert"><h3>MEAL Essentials</h3><p>DisasterReady · Monitoring, evaluation, accountability, and learning fundamentals</p></article>
-        <article class="cert"><h3>FHIR Fundamentals</h3><p>HL7 / HELINA · Fundamentals of interoperability and FHIR standards</p></article>
-        <article class="cert"><h3>Digital Health Foundations</h3><p>Africa Digital Health Academy · Digital health concepts and foundations</p></article>
-        <article class="cert"><h3>Aspire Leaders Program</h3><p>Leadership development and professional learning program</p></article>
+        <div class="cert-card"><i class="fas fa-certificate"></i><div><h4>Power BI</h4><p>Microsoft / Simplilearn · Sept 2026</p></div></div>
+        <div class="cert-card"><i class="fas fa-certificate"></i><div><h4>Digital Health Foundations</h4><p>Africa Digital Health Academy · Sept 2026</p></div></div>
+        <div class="cert-card"><i class="fas fa-certificate"></i><div><h4>MEAL Essentials</h4><p>DisasterReady · May 2026</p></div></div>
+        <div class="cert-card"><i class="fas fa-certificate"></i><div><h4>Data Governance & Management</h4><p>APHRC · Oct 2025</p></div></div>
+        <div class="cert-card"><i class="fas fa-certificate"></i><div><h4>FHIR® Fundamentals</h4><p>HL7 International · Aug 2025</p></div></div>
+        <div class="cert-card"><i class="fas fa-certificate"></i><div><h4>Data Analysis with Python</h4><p>FreeCodeCamp · Aug 2025</p></div></div>
+        <div class="cert-card"><i class="fas fa-certificate"></i><div><h4>Foundations: Data, Data Everywhere</h4><p>Google / Coursera · Jan 2024</p></div></div>
+        <div class="cert-card"><i class="fas fa-certificate"></i><div><h4>Data Science Foundations</h4><p>Great Learning Academy · Nov 2023</p></div></div>
+        <div class="cert-card"><i class="fas fa-certificate"></i><div><h4>DHIS2 & HMIS Core Concepts</h4><p>Ministry of Health, Ethiopia · May 2022</p></div></div>
       </div>
     </div>
   </section>
-  <section id="projects">
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section section-alt">
     <div class="container">
-      <div class="section-kicker">Selected work</div><h2 class="section-title">Projects & analysis</h2>
-      <p class="section-intro">This section will feature project write-ups, analysis notebooks, dashboards, and visual summaries as each portfolio project is completed.</p>
-      <div class="project-placeholder"><strong>Portfolio projects are being prepared.</strong>Project descriptions, links, and project images will be added here after the analyses are finalized and ready to share.</div>
-    </div>
-  </section>
-  <section id="contact">
-    <div class="container">
-      <div class="section-kicker">Contact</div><h2 class="section-title">Let's connect</h2>
-      <p class="section-intro">I'm interested in data analysis, research, health data, and opportunities where reliable data can support better decisions.</p>
-      <div class="contact-panel">
-        <div><h3>Have a project or opportunity in mind?</h3><p>Feel free to reach out or connect with me professionally.</p></div>
-        <div class="contact-links"><a class="button primary" href="mailto:dagimkindu4@gmail.com">Email me</a><a class="button" href="https://linkedin.com/in/dagimkindu4" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button" href="https://github.com/DagimKindu" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-subtitle">Open to data analysis, health informatics, and research opportunities</p>
+      </div>
+      <div class="contact-grid">
+        <a href="mailto:dagimkindu4@gmail.com" class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h4>Email</h4>
+          <p>dagimkindu4@gmail.com</p>
+        </a>
+        <a href="tel:+251960836912" class="contact-card">
+          <i class="fas fa-phone"></i>
+          <h4>Phone</h4>
+          <p>+251 96 083 6912</p>
+        </a>
+        <a href="https://linkedin.com/in/dagimkindu4" target="_blank" class="contact-card">
+          <i class="fab fa-linkedin"></i>
+          <h4>LinkedIn</h4>
+          <p>linkedin.com/in/dagimkindu4</p>
+        </a>
+        <a href="#" class="contact-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h4>Location</h4>
+          <p>Addis Ababa, Ethiopia</p>
+        </a>
       </div>
     </div>
   </section>
-</main>
-<footer><div class="container footer-row"><span>© <span id="year"></span> Dagim Mersha · Data Analyst Portfolio</span><a class="back-top" href="#home">Back to top ↑</a></div></footer>
-<script>
-  const menuButton = document.getElementById('menuBtn');
-  const navLinks = document.getElementById('navLinks');
-  menuButton.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    menuButton.setAttribute('aria-expanded', String(open));
-  });
-  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    menuButton.setAttribute('aria-expanded', 'false');
-  }));
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>Dagim Kindu Mersha<span>.</span></h3>
+          <p>Health Informatics · Data Analyst · Research Assistant</p>
+        </div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://linkedin.com/in/dagimkindu4" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="mailto:dagimkindu4@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Dagim Kindu Mersha. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
